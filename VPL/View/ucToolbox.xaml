@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="VPL.UI.View.ucToolbox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             DataContext="{Binding Toolbox, Source={StaticResource Locator}}">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--<Button Grid.Row="0">
+            <Image Source="{dx:DXImage Image=Apply_16x16.png}"/>
+        </Button>-->
+        <dxg:GridControl ItemsSource="{Binding typeList}" AutoGenerateColumns="None" Grid.Row="1">
+            <dxg:GridControl.View >
+                <dxg:TableView ScrollingMode="Smart"
+                               ShowSearchPanelFindButton="True" 
+                               ShowAutoFilterRow="False"
+                               ShowVerticalLines="False" 
+                               ShowHorizontalLines="False"
+                               ShowGroupedColumns="False"
+                               GroupSummaryDisplayMode="Default"
+                               NavigationStyle="Row" 
+                               ShowIndicator="False"
+                               ShowColumnHeaders="False"
+                               ShowGroupPanel="False"
+                               AllowDragDrop="True"
+                               CompleteRecordDragDrop="DataViewBase_OnCompleteRecordDragDrop" ShowSearchPanelMode="Always"
+                               >
+                </dxg:TableView>
+            </dxg:GridControl.View>
+            <dxg:GridColumn FieldName="Image" Width="16" MaxWidth="16" >
+                <dxg:GridColumn.EditSettings >
+                    <dxe:ImageEditSettings MaxWidth="16"/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="Name"
+                            Width="Auto"
+                            AllowBestFit="True"
+                            SortOrder="Ascending"
+                            BestFitMode="VisibleRows">
+            </dxg:GridColumn>
+        
+                
+            <!--<dxg:GridColumn>
+                <Image Name="test" Source="{dx:DXImage Image=actions_new_16x16office2013.png}"></Image>
+            </dxg:GridColumn>-->
+        </dxg:GridControl>
+    </Grid>
+</UserControl>
