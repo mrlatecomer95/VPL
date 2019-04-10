@@ -34,6 +34,12 @@
                                AllowDragDrop="True"
                                CompleteRecordDragDrop="DataViewBase_OnCompleteRecordDragDrop" ShowSearchPanelMode="Always"
                                >
+                    <dxg:TableView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Command="{Binding RefreshToolboxCommand}" Header="Refresh Toolbox">
+                            </MenuItem>
+                        </ContextMenu>
+                    </dxg:TableView.ContextMenu>
                 </dxg:TableView>
             </dxg:GridControl.View>
             <dxg:GridColumn FieldName="Image" Width="16" MaxWidth="16" >
@@ -45,7 +51,7 @@
                             Width="Auto"
                             AllowBestFit="True"
                             SortOrder="Ascending"
-                            BestFitMode="VisibleRows">
+                            BestFitMode="Smart">
             </dxg:GridColumn>
         
                 

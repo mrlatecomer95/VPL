@@ -1,4 +1,6 @@
+using System.Windows.Input;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
 
 namespace VPL.UI.ViewModel
 {
@@ -16,6 +18,8 @@ namespace VPL.UI.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+
+        #region Constructor
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
@@ -30,5 +34,36 @@ namespace VPL.UI.ViewModel
             ////    // Code runs "for real"
             ////}
         }
+        #endregion
+
+        #region Properties
+
+
+
+        #endregion
+
+
+        #region Commands
+        public ICommand NewCommand { get; set; }
+        public ICommand OpenCommand { get; set; }
+        public ICommand SaveCommand { get; set; }
+        public ICommand HelpCommand { get;set; }
+
+        #endregion
+
+        #region Private Methods
+
+
+        private void BindCommands()
+        {
+            NewCommand = new RelayCommand(NewCommandExecute);
+        }
+
+        private void NewCommandExecute()
+        {
+            
+        }
+
+        #endregion
     }
 }

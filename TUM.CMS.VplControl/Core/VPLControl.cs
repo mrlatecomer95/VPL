@@ -371,8 +371,11 @@ namespace TUM.CMS.VplControl.Core
 
             var node = (Node)Activator.CreateInstance(selectedType, this);
 
-            node.Left = x - 260;
-            node.Top = y - 175;
+            //node.Left = x - 260;
+            //node.Top = y - 175;
+
+            node.Left = x - 45;
+            node.Top = y - 20;
 
             node.Show();
         }
@@ -923,6 +926,56 @@ namespace TUM.CMS.VplControl.Core
             };
         }
 
+
+        public void ZoomToFitNodes()
+        {
+            var bBox = new Rect();
+            //if (item.Name.Contains("Align"))
+                //bBox = Node.GetBoundingBoxOfNodes(HostCanvas.SelectedNodes.ToList());
+            // fit pan
+            bBox = Node.GetBoundingBoxOfNodes(NodeCollection.ToList());
+
+            var deltaX = bBox.Left + bBox.Width / 2 - ActualWidth / 2;
+            var deltaY = bBox.Top + bBox.Height / 2 - ActualHeight / 2;
+
+            foreach (var node in NodeCollection)
+            {
+                node.Left -= deltaX;
+                node.Top -= deltaY;
+            }
+
+            this.Refresh();
+
+            // fit scale
+            bBox = Node.GetBoundingBoxOfNodes(NodeCollection.ToList());
+
+            var ratioX = bBox.Width / ActualWidth;
+            var ratioY = bBox.Height / ActualHeight;
+            var ratio = Math.Max(ratioX, ratioY);
+            //ratio =Math.Ceiling(ratio*10)/10-1;
+            ratio -= 1;
+
+            if (ratio < 0)
+            {
+                // HostCanvas.DoZoomIn(new Point(HostCanvas.ActualWidth/2, HostCanvas.ActualHeight/2),
+                //     Math.Abs(ratio));
+            }
+
+            this.Refresh();
+
+            // fit pan
+            bBox = Node.GetBoundingBoxOfNodes(NodeCollection.ToList());
+
+            deltaX = bBox.Left + bBox.Width / 2 - ActualWidth / 2;
+            deltaY = bBox.Top + bBox.Height / 2 - ActualHeight / 2;
+
+            foreach (var node in NodeCollection)
+            {
+                node.Left -= deltaX;
+                node.Top -= deltaY;
+            }
+            this.Refresh();
+        }
         public void VplControl_KeyDown(object sender, KeyEventArgs e)
         {
             var vector = new Vector();

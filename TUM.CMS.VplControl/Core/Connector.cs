@@ -40,7 +40,9 @@ namespace TUM.CMS.VplControl.Core
             }
 
 
-            Path.Style = HostCanvas.FindResource("VplConnectorStyle") as Style;
+            Path.Style = HostCanvas.FindResource("" +
+                                                 "VplConnectorStyle" +
+                                                 "") as Style;
 
             StartPort = startPort;
             EndPort = endPort;

@@ -126,14 +126,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\ucVplControl.xaml.cs">
+      <DependentUpon>ucVplControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\ToolboxItem.cs" />
-    <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ucToolboxViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\ucToolbox.xaml.cs">
       <DependentUpon>ucToolbox.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\ucVplControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

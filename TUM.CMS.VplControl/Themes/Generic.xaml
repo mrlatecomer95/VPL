@@ -75,7 +75,7 @@
     <system:Double x:Key="LineStrokeThickness">2</system:Double>
 
 
-    <SolidColorBrush x:Key="ConnEllipseFillBrush" Color="{DynamicResource ColorRed}" />
+    <SolidColorBrush x:Key="ConnEllipseFillBrush" Color="{DynamicResource ColorBlue}" />
     <system:Double x:Key="ConnEllipseSize">14</system:Double>
 
     <!-- Dynamic resources -->
@@ -251,6 +251,15 @@
         <!-- <Setter Property="Margin" Value="0,0,0,0" /> -->
         <Setter Property="IsHitTestVisible" Value="False" />
         <Setter Property="Template">
+            <!--<Setter.Value>
+                <ControlTemplate TargetType="core:ConnectorPort">
+                    <Ellipse Name="ellipse" Width="{DynamicResource ConnEllipseSize}"
+                             Height="{DynamicResource ConnEllipseSize}"
+                             Fill="{DynamicResource ConnEllipseFillBrush}"
+                             Stroke="{DynamicResource ConnEllipseFillBrush}"
+                             StrokeThickness="{DynamicResource PortStrokeThickness}" />
+                </ControlTemplate>
+            </Setter.Value>-->
             <Setter.Value>
                 <ControlTemplate TargetType="core:ConnectorPort">
                     <Ellipse Name="ellipse" Width="{DynamicResource ConnEllipseSize}"

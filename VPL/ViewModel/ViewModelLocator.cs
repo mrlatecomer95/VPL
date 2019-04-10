@@ -40,7 +40,6 @@ namespace VPL.UI.ViewModel
             ////    // Create run time view services and models
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
-
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<ucToolboxViewModel>();
         }

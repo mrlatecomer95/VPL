@@ -11,7 +11,8 @@
         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
         mc:Ignorable="d"
         Title="Visual Programming" Height="727" Width="979"
-        WindowState="Maximized">
+        WindowState="Maximized"
+        DataContext="{Binding Main, Source={StaticResource Locator}}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -21,19 +22,22 @@
             <dxr:RibbonDefaultPageCategory>
                 <dxr:RibbonPage Caption="Home">
                     <dxr:RibbonPageGroup Caption="File">
-                        <dxb:BarButtonItem x:Name="btnPaste" Content="New" Glyph="{dx:DXImage Image=New_32x32.png}" RibbonStyle="Large"/>
-                        <dxb:BarButtonItem x:Name="btnCut" Content="Open" Glyph="{dx:DXImage Image=Open_32x32.png}" />
-                        <dxb:BarButtonItem x:Name="btnCopy" Content="Save" Glyph="{dx:DXImage Image=Save_32x32.png}"/>
+                        <dxb:BarButtonItem x:Name="btnNew" Content="New" Glyph="{dx:DXImage Image=New_32x32.png}" RibbonStyle="Large" Command="{Binding }"/>
+                        <dxb:BarButtonItem x:Name="btnOpen" Content="Open" Glyph="{dx:DXImage Image=Open_32x32.png}" />
+                        <dxb:BarButtonItem x:Name="btnSave" Content="Save" Glyph="{dx:DXImage Image=Save_32x32.png}"/>
                     </dxr:RibbonPageGroup>
-                    <dxr:RibbonPageGroup Caption=" " SmallGlyph="{dx:DXImage Image=AlignCenter_16x16.png}">
-                        <dxb:BarButtonItem Content="Zoom to Fit" Glyph="{dx:DXImage Image=Zoom100Percent_32x32.png}" LargeGlyph="{dx:DXImage Image=Zoom100Percent_32x32.png}"/>
-                        <dxb:BarButtonItem Content="Group" Glyph="{dx:DXImage Image=Group_32x32.png}" LargeGlyph="{dx:DXImage Image=Group_32x32.png}"/>
-                        <dxb:BarButtonItem Content="Left" Glyph="{dx:DXImage Image=AlignLeft_32x32.png}"/>
-                        <dxb:BarButtonItem Content="Center" Glyph="{dx:DXImage Image=AlignCenter_32x32.png}"/>
-                        <dxb:BarButtonItem Content="Right" Glyph="{dx:DXImage Image=AlignRight_32x32.png}"/>
+                    <!--<dxr:RibbonPageGroup Caption=" " SmallGlyph="{dx:DXImage Image=AlignCenter_16x16.png}">
+                        <dxb:BarButtonItem Content="Zoom to Fit" x:Name="btnZoomToFit" Glyph="{dx:DXImage Image=Zoom100Percent_32x32.png}" LargeGlyph="{dx:DXImage Image=Zoom100Percent_32x32.png}"/>
+                        <dxb:BarButtonItem Content="Group" x:Name="btnGroup" Glyph="{dx:DXImage Image=Group_32x32.png}" LargeGlyph="{dx:DXImage Image=Group_32x32.png}"/>
+                        <dxb:BarButtonItem Content="Left" x:Name="btnAlignLeft" Glyph="{dx:DXImage Image=AlignLeft_32x32.png}"/>
+                        <dxb:BarButtonItem Content="Center" x:Name="btnAlignCenter" Glyph="{dx:DXImage Image=AlignCenter_32x32.png}"/>
+                        <dxb:BarButtonItem Content="Right" x:Name="btnAlignRight" Glyph="{dx:DXImage Image=AlignRight_32x32.png}"/>
+                    </dxr:RibbonPageGroup>-->
+                    <dxr:RibbonPageGroup Caption=" ">
+                        <dxb:BarButtonItem Content="Help" x:Name="btnHelp" Glyph="{dx:DXImage Image=Info_32x32.png}" LargeGlyph="{dx:DXImage Image=Info_32x32.png}"/>
                     </dxr:RibbonPageGroup>
                     <dxr:RibbonPageGroup Caption=" ">
-                        <dxb:BarButtonItem Content="Help" Glyph="{dx:DXImage Image=Info_32x32.png}" LargeGlyph="{dx:DXImage Image=Info_32x32.png}"/>
+                        <dxb:BarButtonItem x:Name="btnAddReferences" Glyph="{dx:DXImage Image=AddFile_32x32.png}" LargeGlyph="{dx:DXImage Image=AddFile_32x32.png}" Content="Add Reference"/>
                     </dxr:RibbonPageGroup>
                 </dxr:RibbonPage>
             </dxr:RibbonDefaultPageCategory>
@@ -44,10 +48,7 @@
                     <!--Add custom controls to the pane here-->
                     <toolbox:ucToolbox/>
                 </dxdo:LayoutPanel>
-                <dxdo:DocumentGroup>
-                    <dxdo:DocumentPanel x:Name="paneDocument1" Caption="Document 1">
-                        <core:VplControl Name="VplControl" ClipToBounds="True" AllowDrop="True"/>
-                    </dxdo:DocumentPanel>
+                <dxdo:DocumentGroup x:Name="DocumentGroup">
                 </dxdo:DocumentGroup>
             </dxdo:LayoutGroup>
         </dxdo:DockLayoutManager>

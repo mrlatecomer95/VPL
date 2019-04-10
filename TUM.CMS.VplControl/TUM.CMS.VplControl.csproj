@@ -96,6 +96,7 @@
     <Compile Include="Nodes\Input\ReadTextFile.cs" />
     <Compile Include="Nodes\Input\FileWatcher.cs" />
     <Compile Include="Nodes\Input\FilePath.cs" />
+    <Compile Include="Nodes\Logic\IfNode2.cs" />
     <Compile Include="Nodes\Logic\LessThan.cs" />
     <Compile Include="Nodes\Logic\GreaterThan.cs" />
     <Compile Include="Nodes\Logic\IfNode.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Nodes\Math\SubtractNode.cs" />
     <Compile Include="Nodes\Math\SumNode.cs" />
     <Compile Include="Nodes\SetFloatPoint.cs" />
+    <Compile Include="Nodes\WriteAdvisoryNode.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Themes\Theme.cs" />
     <Compile Include="Core\VplElement.cs" />
