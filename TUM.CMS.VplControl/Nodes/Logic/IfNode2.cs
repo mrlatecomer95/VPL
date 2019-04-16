@@ -4,8 +4,10 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Input;
 using System.Xml;
 using TUM.CMS.VplControl.Core;
+using TUM.CMS.VplControl.NodeControls;
 using TUM.CMS.VplControl.Utilities;
 using Expression = NCalc.Expression;
 
@@ -51,8 +53,82 @@ namespace TUM.CMS.VplControl.Nodes.Logic
 
             MouseEnter += IfNode2_MouseEnter;
             MouseLeave += IfNode2_MouseLeave;
+            IsResizeable = true;
+
+        }
+        public override void Calculate()
+        {
+            //var data = InputPorts[0].Data;
+            //if (data != null && (bool)data)
+            //    OutputPorts[0].Data = InputPorts[1].Data;
+            //else if (data != null)
+            //    OutputPorts[0].Data = InputPorts[2].Data;
+
+            if (expression != null)
+            {
+                foreach (var port in InputPorts)
+                    expression.Parameters[port.Name] = port.Data;
+                try
+                {
+                    //OutputPorts[0].Data = expression.Evaluate();
+                    var data = expression.Evaluate();
+
+                    if (data != null && (bool)data)
+                    {
+                        OutputPorts[1].Data = null;
+                        OutputPorts[0].Data = data;
+                    }
+                    else if (data != null)
+                    {
+                        OutputPorts[0].Data = null;
+                        OutputPorts[1].Data = data;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    OutputPorts[0].Data = null;
+                    OutputPorts[1].Data = null;
+                }
+            }
+            else
+            {
+                OutputPorts[0].Data = null;
+                OutputPorts[1].Data = null;
+            }
 
 
+
+        }
+
+        public override Node Clone()
+        {
+            var node = new IfNode2(HostCanvas)
+            {
+                Top = Top,
+                Left = Left
+            };
+
+            return node;
+        }
+        public override void SerializeNetwork(XmlWriter xmlWriter)
+        {
+            base.SerializeNetwork(xmlWriter);
+
+            var textBox = ControlElements[0] as TextBox;
+            if (textBox == null) return;
+
+            xmlWriter.WriteStartAttribute("Formula");
+            xmlWriter.WriteValue(textBox.Text);
+            xmlWriter.WriteEndAttribute();
+        }
+        public override void DeserializeNetwork(XmlReader xmlReader)
+        {
+            base.DeserializeNetwork(xmlReader);
+
+            var textBox = ControlElements[0] as TextBox;
+            if (textBox == null) return;
+
+            textBox.Text = xmlReader.GetAttribute("Formula");
         }
 
         private void IfNode2_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
@@ -104,7 +180,6 @@ namespace TUM.CMS.VplControl.Nodes.Logic
             Calculate();
         }
 
-
         public List<string> GetParametersInExpression(string formula)
         {
             try
@@ -121,84 +196,16 @@ namespace TUM.CMS.VplControl.Nodes.Logic
                 return new List<string>();
             }
         }
-        public override void Calculate()
+
+        public override void Node_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //var data = InputPorts[0].Data;
-            //if (data != null && (bool)data)
-            //    OutputPorts[0].Data = InputPorts[1].Data;
-            //else if (data != null)
-            //    OutputPorts[0].Data = InputPorts[2].Data;
-
-            if (expression != null)
+            base.Node_MouseDown(sender,e);
+            if (e.LeftButton != MouseButtonState.Pressed) return;
+            if (e.ClickCount == 2)
             {
-                foreach (var port in InputPorts)
-                    expression.Parameters[port.Name] = port.Data;
-
-                try
-                {
-                    //OutputPorts[0].Data = expression.Evaluate();
-                    var data = expression.Evaluate();
-
-                    if (data != null && (bool) data)
-                    {
-                        OutputPorts[1].Data = null;
-                        OutputPorts[0].Data = data;
-                    }
-                    else if (data != null)
-                    {
-                        OutputPorts[0].Data = null;
-                        OutputPorts[1].Data = data;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    OutputPorts[0].Data = null;
-                    OutputPorts[1].Data = null;
-                }
+                var frm = new NodePropertyWindow(this);
+                frm.ShowDialog();
             }
-            else
-            {
-                OutputPorts[0].Data = null;
-                OutputPorts[1].Data = null;
-            }
-                
-
-
-        }
-
-        public override void SerializeNetwork(XmlWriter xmlWriter)
-        {
-            base.SerializeNetwork(xmlWriter);
-
-            var textBox = ControlElements[0] as TextBox;
-            if (textBox == null) return;
-
-            xmlWriter.WriteStartAttribute("Formula");
-            xmlWriter.WriteValue(textBox.Text);
-            xmlWriter.WriteEndAttribute();
-        }
-
-        public override void DeserializeNetwork(XmlReader xmlReader)
-        {
-            base.DeserializeNetwork(xmlReader);
-
-            var textBox = ControlElements[0] as TextBox;
-            if (textBox == null) return;
-
-            textBox.Text = xmlReader.GetAttribute("Formula");
-        }
-
-
-
-        public override Node Clone()
-        {
-            var node = new IfNode2(HostCanvas)
-            {
-                Top = Top,
-                Left = Left
-            };
-
-            return node;
         }
     }
 }

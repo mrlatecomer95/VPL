@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using TUM.CMS.VplControl.Core;
 
@@ -19,6 +20,11 @@ namespace TUM.CMS.VplControl.Nodes.List
         public override void Calculate()
         {
             OutputPorts[0].Data = InputPorts[0].Data;
+
+            List<object> x = new List<object>();
+
+
+            //var list = 
         }
 
         public override Node Clone()

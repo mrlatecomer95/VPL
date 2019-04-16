@@ -27,9 +27,7 @@ namespace TUM.CMS.VplControl.Nodes.Input
                  Width = 150,
                  ItemsSource = SamplePoints.GetPoints().Select(x=>x.Name).ToList(),
             };
-
             _cmbobox.SelectionChanged += _cmbobox_SelectionChanged;
-
             AddControlToNode(_cmbobox);
         }
 

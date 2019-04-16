@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VPL.UI", "VPL.UI.csproj", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TUM.CMS.VplControl", "..\TUM.CMS.VplControl\TUM.CMS.VplControl.csproj", "{593E9BFD-BE78-4487-9E22-76AE7DF0B84A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{27317B19-4322-4A38-B175-FABCF036C3BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodeClassGenerator", "NodeClassGenerator\NodeClassGenerator.csproj", "{2686E59C-33C0-4765-A990-90EEC2B4A2BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +25,15 @@ Global
 		{593E9BFD-BE78-4487-9E22-76AE7DF0B84A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{593E9BFD-BE78-4487-9E22-76AE7DF0B84A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{593E9BFD-BE78-4487-9E22-76AE7DF0B84A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2686E59C-33C0-4765-A990-90EEC2B4A2BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2686E59C-33C0-4765-A990-90EEC2B4A2BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2686E59C-33C0-4765-A990-90EEC2B4A2BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2686E59C-33C0-4765-A990-90EEC2B4A2BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2686E59C-33C0-4765-A990-90EEC2B4A2BA} = {27317B19-4322-4A38-B175-FABCF036C3BD}
 	EndGlobalSection
 EndGlobal

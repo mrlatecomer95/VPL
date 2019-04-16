@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace TUM.CMS.VplControl.Utilities
@@ -37,6 +38,11 @@ namespace TUM.CMS.VplControl.Utilities
             {
                 point.Value = value.ToString();
             }
+        }
+
+        public static void WriteAdvisory(string advisory)
+        {
+            Console.WriteLine(advisory);
         }
     }
 

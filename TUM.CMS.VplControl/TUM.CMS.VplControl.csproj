@@ -37,6 +37,9 @@
       <HintPath>..\VPL\packages\ncalc.1.3.8\lib\NCalc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PIPoint">
+      <HintPath>..\MISC\Libraries\PIPoint.dll</HintPath>
+    </Reference>
     <Reference Include="RadialMenu, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\VPL\packages\RadialMenu.WPF.1.3.0\lib\net45\RadialMenu.dll</HintPath>
       <Private>True</Private>
@@ -82,16 +85,34 @@
     <Compile Include="Controls\SliderExpanderInteger.cs" />
     <Compile Include="Core\BindingPoint.cs" />
     <Compile Include="Core\ConnectorPort.cs" />
+    <Compile Include="Core\DataTypes\IVplDataTypeModel.cs" />
+    <Compile Include="Core\DataTypes\VplDataTypeModel.cs" />
+    <Compile Include="Core\DataTypes\VplDataTypes.cs" />
     <Compile Include="Core\NodeAutoCheckBox.cs" />
     <Compile Include="Core\SearchTextBox.cs" />
     <Compile Include="Core\VplGroupControl.xaml.cs">
       <DependentUpon>VplGroupControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\ZoomCanvas.cs" />
+    <Compile Include="NodeControls\ActionBlockProperty.xaml.cs">
+      <DependentUpon>ActionBlockProperty.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NodeControls\ExpressionControl.xaml.cs">
+      <DependentUpon>ExpressionControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NodeControls\IfThenElseControl.xaml.cs">
+      <DependentUpon>IfThenElseControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NodeControls\NodePropertyWindow.xaml.cs">
+      <DependentUpon>NodePropertyWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Nodes\ColorNode.cs" />
+    <Compile Include="Nodes\DataTypeConversion.cs" />
     <Compile Include="Nodes\CommentNode.cs" />
     <Compile Include="Nodes\ExpressionNode.cs" />
     <Compile Include="Nodes\GroupInputNode.cs" />
+    <Compile Include="Nodes\IFNodes\ActionBlock.cs" />
+    <Compile Include="Nodes\IFNodes\WriteAdvisory.cs" />
     <Compile Include="Nodes\Input\GetFloatPoint.cs" />
     <Compile Include="Nodes\Input\ReadTextFile.cs" />
     <Compile Include="Nodes\Input\FileWatcher.cs" />
@@ -144,6 +165,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Core\VplGroupControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NodeControls\ActionBlockProperty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NodeControls\ExpressionControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NodeControls\IfThenElseControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NodeControls\NodePropertyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

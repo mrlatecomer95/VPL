@@ -97,7 +97,7 @@ namespace TUM.CMS.VplControl.Core
         public TrulyObservableCollection<Connector> SelectedConnectors { get; set; }
 
         [Browsable(false)]
-        public List<Type> ExternalNodeTypes { get; set; }
+        public List<Type>ExternalNodeTypes { get; set; }
 
         [Browsable(false)]
         public NodeTypeModes NodeTypeMode { get; set; }

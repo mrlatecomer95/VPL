@@ -20,26 +20,12 @@ namespace TUM.CMS.VplControl.Nodes
                 ItemsSource = SamplePoints.GetPoints().Select(x => x.Name).ToList(),
             };
 
-
             var textBlock = new TextBox()
             {
                 TextWrapping = TextWrapping.Wrap,
                 FontSize = 14,
                 Padding = new Thickness(5),
             };
-
-            //var scrollViewer = new ScrollViewer
-            //{
-            //    HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
-            //    VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
-            //    MinWidth = 120,
-            //    MinHeight = 20,
-            //    MaxWidth = 200,
-            //    MaxHeight = 400,
-            //    CanContentScroll = true,
-            //    Content = textBlock,
-            //    // IsHitTestVisible = false
-            //};
 
             AddControlToNode(_cmbobox);
             AddControlToNode(textBlock);
@@ -55,9 +41,8 @@ namespace TUM.CMS.VplControl.Nodes
 
         public override void Calculate()
         {
-            var textbox = (TextBox)ControlElements[1];
-            SamplePoints.SetFloatPoint(_selectedPoint,Convert.ToDecimal(textbox.Text) );
         }
+
 
         public override Node Clone()
         {

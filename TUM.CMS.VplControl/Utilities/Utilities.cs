@@ -111,7 +111,6 @@ namespace TUM.CMS.VplControl.Utilities
                             tempLine += Environment.NewLine;
                     }
                 }
-
                 counter++;
             }
             return tempLine;

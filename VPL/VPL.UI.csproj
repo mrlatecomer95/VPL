@@ -133,6 +133,7 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ucToolboxViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\SetFloatPointList.cs" />
     <Compile Include="View\ucToolbox.xaml.cs">
       <DependentUpon>ucToolbox.xaml</DependentUpon>
     </Compile>
